@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    
+    <entry key="profile.name">DEV</entry>
+    
+    <entry key="oracle.driver">net.sf.log4jdbc.DriverSpy</entry>
+    <entry key="oracle.url">jdbc:log4jdbc:oracle:thin:@192.168.91.17:1521:insa</entry>
+    <entry key="oracle.username">TBSDEV</entry>
+    <entry key="oracle.password">wH2g^Mr#LP</entry>
+    
+    <entry key="server.port">9405</entry>
+    
+    <entry key="telegram.filePath">/logichome/tbs/logs/hask/server/test/telegram</entry>
+    
+    <entry key="sms.send.test">true</entry>
+
+    <entry key="command.file">/command/command-dev</entry>
+        
+</properties>

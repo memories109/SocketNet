@@ -1,0 +1,8 @@
+package com.etbs.hask.realtime.dao;
+
+import com.etbs.hask.realtime.message.KakaoMessage;
+
+public interface KakaoDao {
+	public void saveData(KakaoMessage mesaage);
+}
+

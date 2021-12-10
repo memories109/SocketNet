@@ -1,0 +1,38 @@
+package com.etbs.hask.realtime.service;
+
+import java.util.HashMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.etbs.hask.realtime.dao.HS10Dao;
+import com.etbs.hask.realtime.model.HS10Model;
+import com.etbs.hask.realtime.model.MemberInfoModel;
+
+@Service
+public class HS10Service {
+
+	@Autowired
+	private HS10Dao dao;
+	
+	public MemberInfoModel getMemberInfo(String ci, String crtcrdProdNo) {
+		
+		HashMap<String, String> param = new HashMap<String, String>();
+		
+		param.put("ci", ci);
+		param.put("crtcrdProdNo", crtcrdProdNo);
+		
+		return dao.getMemberInfo(param);
+	}
+
+	public void setData(HS10Model hs10Model) {
+		
+		dao.setData(hs10Model);
+		
+	}
+
+	public void setApplData(HS10Model hs10Model) {
+		dao.setApplData(hs10Model);
+	}
+
+}

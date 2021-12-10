@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.etbs.hask.realtime.dao.KakaoDao">
+
+    <insert id="saveData" parameterType="com.etbs.hask.realtime.message.KakaoMessage">
+        /* kakao.saveData,  알림톡 응답값 저장 */
+         INSERT INTO TCOMM_ALIMTALK_INFO
+         (
+              MSG_ID,
+              PROFILE_KEY,
+              TEMPLATE_CODE,
+              RECEIVER_NUM,
+              RESERVED_TIME,
+              MESSAGE,
+              SMS_KIND,
+              SEND_NUM,
+              SMS_MESSAGE,
+              RES_TIME,
+              RESULT,
+              RES_CODE,
+              RES_ERR_MSG
+         )
+         VALUES
+         (
+            #{msgid},
+            #{profileKey},
+            #{templateCode},
+            #{receiverNumber},
+            #{reservedTime},
+            #{message},
+            #{smsKind},
+            #{senderNumber},
+            #{smsMessage},
+            SYSDATE,
+            #{result},
+            #{resultCode},
+            #{resultMessage}
+         )
+    </insert>    
+    
+   
+</mapper>

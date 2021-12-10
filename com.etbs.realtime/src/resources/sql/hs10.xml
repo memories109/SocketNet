@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.realtime.dao.HS10Dao">
+    
+    <select id="getMemberInfo" resultType="com.realtime.model.MemberInfoModel" parameterType="java.util.HashMap">
+        /* com.realtime.dao.HS10Dao.getModelInfo 해당 매출에 대한 회원정보 가지고 오기 이도한 */
+        SELECT  BAS.MBR_NO
+                , BAS.MBR_NM
+                , BAS.CMPY_NO
+                , BAS.HP_NO
+                , BAS.EMAIL
+                , INF.FAM_RTN_PSB_YN
+                , NVL(CMPY.MST_CUST_TEL_NO,'1899-0522') AS CALL_CENTER_NUMBER /* 콜센터번호 */
+                , NVL(CMPY.STE_NM,'복리후생관') AS SHOP_NAME /* 몰이름 */
+                , NVL((SELECT   POLC.MOBL_PNT_NM
+                         FROM   TWPNT_POLC_BAS POLC
+                        WHERE   POLC.cmpy_no = CMPY.CMPY_NO
+                          AND   TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN POLC.POLC_STRT_DD
+                                                                 AND POLC.POLC_END_DD
+                          AND   POLC.USE_YN ='Y'),'복지포인트')  POINT_NAME
+          FROM  TCMPY_CMPY_BAS CMPY
+          JOIN  TMBR_MBR_BAS BAS
+            ON  CMPY.CMPY_NO = BAS.CMPY_NO
+          JOIN  TWCRD_CMPY_CRTCRD_INF INF
+            ON  CMPY.cmpy_no = INF.CMPY_NO
+         WHERE  BAS.LOGIN_LCK_YN = 'N'
+           AND  BAS.SRE_TP_CD = '10'
+           AND  INF.CRDCO_NO = 'HA'
+           AND  INF.SET_FIN_YN = 'Y'
+           <!-- AND  EXISTS (SELECT CMPY_NO  FROM TWCRD_CRTCRD_PROD_INF WHERE CRTCRD_PROD_NO = #{crtcrdProdNo}) 카드상품코드가 일치해야 --> 
+           AND  BAS.CI = #{ci}
+           AND ROWNUM = 1
+           ORDER BY BAS.MOD_DTS DESC
+      
+    </select>  
+    
+    <insert id="setData" parameterType="com.realtime.model.HS10Model" useGeneratedKeys="true">
+                  
+	  <selectKey keyProperty="seq" resultType="int" order="BEFORE">
+      SELECT TWCRD_RT_RCV_INF_SEQ.NEXTVAL FROM DUAL
+	  </selectKey> 
+
+        INSERT  INTO   TWCRD_RT_RCV_INF ( /* com.realtime.dao.HS10Dao.setData 전문데이터저장 이도한 */                            
+                SEQ
+                , RT_ACPT_PK
+                , CRTCRD_SLS_TP_CD
+                , CRTCRDLN_TYPE
+                , CRTCRD_NO
+                , INST_CRTCRD_TP_CD
+                , CRTCRD_APPR_NO
+                , USE_PRC
+                , MCNS_NM
+                , FAM_CRTCRD_TP_CD
+                , MCNS_BNTP_NO
+                , MCNS_BNTP_NM
+                , MCNS_BIZNO
+                , CRTCRD_USE_DT
+                , CRTCRD_USE_DD
+                , CRTCRD_PROD_NO
+                , SLS_PART_ACPT
+                , MCNS_NO
+                , CI
+                , SLS_ACPT_NO
+                , CRDCO_NO
+                
+                , MBR_NO
+                , MBR_NM
+                , CMPY_NO
+                
+                , REG_DT    )
+            VALUES (
+                ${seq}
+                , #{realTimePK}                      -- 실시간 매출 PK
+                , #{statementTypeCode}               -- 카드매출유형코드 [WC019] (10:정상/20:취소/30:정보없음)
+                , #{cardType}                        -- 카드구분 (01:신용/11:체크)
+                , #{card4No}                         -- 카드번호 뒷 네자리
+                , #{allPayTypeCode}                  -- 할부카드유형코드 [WC020] (10:일시불/20:할부/30:정보없음)
+                , #{agreeNo}                         -- 카드승인번호
+                , ${useMoney}                        -- 사용금액
+                , #{storeName}                       -- 가맹점명
+                , #{familyTypeCode}                  -- 가족카드유형코드 [WC021] (10:본인/20:가족/30:정보없음)
+                , #{storeTypeNo}                     -- 가맹점업종코드
+                , #{storeTypeName}                   -- 가맹점업종명
+                , #{storeBizNo}                      -- 가맹점사업자등록증번호
+                , #{useDateTime}                     -- 카드사용일
+                , #{useDateTimeString}               -- 카드사용일(YYYYMMDD)
+                , #{designCode}                      -- 카드상품번호
+                , #{enableDivied}                    -- 분할매일가능여부 (0:불가/1:가능) - 1은 실시간 처리하지 않음
+                , #{storeNo}                         -- 가맹점번호 (9자리)
+                , #{ci}                              -- CI
+                , #{realTimePK}                      -- 매출전표번호
+                , 'HA'                               -- 카드라인
+                
+                , #{memberInfo.mbrNo}                -- 회원번호
+                , #{memberInfo.mbrNm}                -- 회원명
+                , #{memberInfo.cmpyNo}               -- 고객사 코드
+                
+                , SYSDATE                            -- 등록일
+                )
+                                           
+    
+    </insert>
+  
+     <parameterMap id="hs10Model" type="com.realtime.model.HS10Model">        
+        <parameter property="seq" mode="IN" jdbcType="NUMERIC" javaType="java.lang.Integer"/>        
+        <parameter property="remainPnt" mode="OUT" jdbcType="NUMERIC" javaType="java.lang.Double"/> 
+        <parameter property="applPnt" mode="OUT" jdbcType="NUMERIC" javaType="java.lang.Double"/>      
+        <parameter property="returnCode" mode="OUT" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <parameter property="returnMessage" mode="OUT" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    </parameterMap>
+    <insert id="setApplData" statementType="CALLABLE" parameterMap="hs10Model">
+        { CALL PWCRD_RT_HASK_PROC(?,?,?,?,?) }
+    </insert>  
+   
+</mapper>

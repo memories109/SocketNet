@@ -1,0 +1,16 @@
+package com.etbs.hask.realtime.dao;
+
+import java.util.HashMap;
+
+import com.etbs.hask.realtime.model.HS10Model;
+import com.etbs.hask.realtime.model.MemberInfoModel;
+
+public interface HS10Dao {
+
+	public MemberInfoModel getMemberInfo(HashMap<String, String> param);
+
+	public void setData(HS10Model hs10Model);
+
+	public void setApplData(HS10Model hs10Model);	
+
+}

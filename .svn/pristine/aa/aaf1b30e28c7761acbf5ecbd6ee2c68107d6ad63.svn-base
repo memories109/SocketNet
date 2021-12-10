@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration scan="true" scanPeriod="180 seconds">
+	<if condition='property("app.log.home") != null &amp;&amp; !property("app.log.home").equals("")'>
+		<then>
+			<property name="LOG_HOME" value="${app.log.home}" />
+		</then>
+		<else>
+			<property name="LOG_HOME" value="logs" />
+		</else>
+	</if>
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<!-- 로그 발생 시각, 패키지 생략 -->
+			<pattern>[%-5level] %date{ISO8601} : %msg%n</pattern>
+			<!-- 로그 발생 시각, 패키지 출력 -->
+<!-- 			<pattern>[%-5level] %date{ISO8601}: %logger#%method: %msg%n</pattern> -->
+		</encoder>
+	</appender>
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_HOME}/server.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/server-%d{yyyyMMdd}-%i.log</fileNamePattern>
+			<maxFileSize>50MB</maxFileSize>
+			<maxHistory>14</maxHistory> <!-- 2주 지난 파일은 삭제 -->
+<!-- 			<totalSizeCap>20GB</totalSizeCap> -->
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%-5level] %date{ISO8601}: %logger#%method: %msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<file>${LOG_HOME}/server-error.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/server-error-%d{yyyyMMdd}.log</fileNamePattern>
+			<maxHistory>14</maxHistory> <!-- 2주 지난 파일은 삭제 -->
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%-5level] %date{ISO8601}: %logger#%method: %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.etbs.hd.realtime" level="DEBUG" />
+
+	<!-- spring -->
+	<logger name="org.springframework" level="DEBUG" />
+	<logger name="org.springframework.core" level="WARN" />
+	<logger name="org.springframework.web" level="WARN" />
+	<logger name="org.springframework.context" level="WARN" />
+	<logger name="org.springframework.beans" level="WARN" />
+	<logger name="org.springframework.aop" level="WARN" />
+	<logger name="org.springframework.transaction" level="WARN" />
+	<logger name="org.springframework.jndi" level="WARN" />
+	<logger name="org.springframework.ui" level="WARN" />
+
+	<!-- mybatis -->
+	<logger name="org.mybatis" level="WARN" />
+
+	<!-- apache -->
+	<logger name="org.apache" level="DEBUG" />
+	<logger name="org.apache.ibatis.io.ResolverUtil" level="WARN" />
+	<logger name="org.apache.http" level="WARN" />
+	<logger name="org.apache.commons.beanutils.converters" level="WARN" />
+
+	<!-- sql -->
+	<logger name="com.etbs.hd.realtime.dao" level="WARN" />
+	<logger name="jdbc" level="DEBUG" />
+	<logger name="jdbc.connection" level="WARN" />
+	<logger name="jdbc.sqltiming" level="WARN" />
+	<logger name="jdbc.resultset" level="WARN" />
+	<logger name="jdbc.audit" level="WARN" />
+	<logger name="org.apache.ibatis" level="DEBUG" />
+	<logger name="org.springframework.jdbc.datasource" level="WARN" />
+	<logger name="org.springframework.jdbc.datasource.DataSourceUtils" level="WARN" />
+	
+	<root level="DEBUG">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+		<appender-ref ref="ERROR_FILE" />
+	</root>
+</configuration>

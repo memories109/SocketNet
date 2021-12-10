@@ -1,0 +1,30 @@
+[DEBUG] 2021-12-08 14:04:57,115: org.apache.ibatis.logging.LogFactory#setImplementation: Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+[DEBUG] 2021-12-08 14:04:57,149: log4jdbc.debug#debug: ... log4jdbc initializing ...
+[DEBUG] 2021-12-08 14:04:57,149: log4jdbc.debug#debug:   log4jdbc.properties not found on classpath
+[DEBUG] 2021-12-08 14:04:57,149: log4jdbc.debug#debug: x log4jdbc.debug.stack.prefix is not defined
+[DEBUG] 2021-12-08 14:04:57,150: log4jdbc.debug#debug: x log4jdbc.sqltiming.warn.threshold is not defined
+[DEBUG] 2021-12-08 14:04:57,150: log4jdbc.debug#debug: x log4jdbc.sqltiming.error.threshold is not defined
+[DEBUG] 2021-12-08 14:04:57,150: log4jdbc.debug#debug: x log4jdbc.dump.booleanastruefalse is not defined (using default value false)
+[DEBUG] 2021-12-08 14:04:57,150: log4jdbc.debug#debug: x log4jdbc.dump.sql.maxlinelength is not defined (using default of 90)
+[DEBUG] 2021-12-08 14:04:57,151: log4jdbc.debug#debug: x log4jdbc.dump.fulldebugstacktrace is not defined (using default value false)
+[DEBUG] 2021-12-08 14:04:57,151: log4jdbc.debug#debug: x log4jdbc.statement.warn is not defined (using default value false)
+[DEBUG] 2021-12-08 14:04:57,151: log4jdbc.debug#debug: x log4jdbc.dump.sql.select is not defined (using default value true)
+[DEBUG] 2021-12-08 14:04:57,151: log4jdbc.debug#debug: x log4jdbc.dump.sql.insert is not defined (using default value true)
+[DEBUG] 2021-12-08 14:04:57,151: log4jdbc.debug#debug: x log4jdbc.dump.sql.update is not defined (using default value true)
+[DEBUG] 2021-12-08 14:04:57,151: log4jdbc.debug#debug: x log4jdbc.dump.sql.delete is not defined (using default value true)
+[DEBUG] 2021-12-08 14:04:57,151: log4jdbc.debug#debug: x log4jdbc.dump.sql.create is not defined (using default value true)
+[DEBUG] 2021-12-08 14:04:57,152: log4jdbc.debug#debug: x log4jdbc.dump.sql.addsemicolon is not defined (using default value false)
+[DEBUG] 2021-12-08 14:04:57,152: log4jdbc.debug#debug: x log4jdbc.auto.load.popular.drivers is not defined (using default value true)
+[DEBUG] 2021-12-08 14:04:57,152: log4jdbc.debug#debug: x log4jdbc.trim.sql is not defined (using default value true)
+[DEBUG] 2021-12-08 14:04:57,152: log4jdbc.debug#debug: x log4jdbc.trim.sql.extrablanklines is not defined (using default value true)
+[DEBUG] 2021-12-08 14:04:57,152: log4jdbc.debug#debug: x log4jdbc.suppress.generated.keys.exception is not defined (using default value false)
+[DEBUG] 2021-12-08 14:04:57,153: log4jdbc.debug#debug: x log4jdbc.drivers is not defined
+[DEBUG] 2021-12-08 14:04:57,224: log4jdbc.debug#debug:   FOUND DRIVER com.microsoft.sqlserver.jdbc.SQLServerDriver
+[DEBUG] 2021-12-08 14:04:57,225: log4jdbc.debug#debug:   FOUND DRIVER com.mysql.jdbc.Driver
+[DEBUG] 2021-12-08 14:04:57,225: log4jdbc.debug#debug:   FOUND DRIVER oracle.jdbc.OracleDriver
+[DEBUG] 2021-12-08 14:04:57,225: log4jdbc.debug#debug:   FOUND DRIVER oracle.jdbc.driver.OracleDriver
+[DEBUG] 2021-12-08 14:04:57,227: log4jdbc.debug#debug: ... log4jdbc initialized! ...
+[DEBUG] 2021-12-08 14:04:57,434: com.realtime.App#main: IS DEV START ------------------------------------------------------------------------------
+[INFO ] 2021-12-08 14:04:57,435: com.realtime.server.RealTimeServer#getCommandPath: command properties : /C:/developer/workspace/hask_realtime_socket_server/com.realtime/target/classes//command/command-local.properties
+[INFO ] 2021-12-08 14:04:57,437: com.realtime.server.RealTimeServer#run: resetting command properties : /C:/developer/workspace/hask_realtime_socket_server/com.realtime/target/classes//command/command-local.properties 
+[DEBUG] 2021-12-08 14:04:57,439: com.realtime.server.RealTimeServer#run: LOCAL RealTimeServer Started : port = 9405 / 2018-08-30 13:36

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="profile.name">LOCAL</entry>
+	
+	<entry key="oracle.driver">net.sf.log4jdbc.DriverSpy</entry>
+	<entry key="oracle.url">jdbc:log4jdbc:oracle:thin:@localhost</entry>
+	<entry key="oracle.username">username</entry>
+	<entry key="oracle.password">password</entry>
+	
+	<entry key="server.port">XXXX</entry>
+	
+	<entry key="telegram.filePath">C:\_workspace\_log</entry>
+	
+	<entry key="sms.send.test">true</entry>
+	
+	<entry key="test.telegram"></entry>
+
+	<entry key="command.file">/command/command-local</entry>
+		
+</properties>

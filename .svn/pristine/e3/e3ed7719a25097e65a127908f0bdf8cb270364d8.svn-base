@@ -1,0 +1,18 @@
+package com.etbs.hask.realtime.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.etbs.hask.realtime.dao.KakaoDao;
+import com.etbs.hask.realtime.message.KakaoMessage;
+
+@Service
+public class KakaoService {
+	
+	@Autowired
+	private KakaoDao dao;
+	
+	public void saveData(KakaoMessage mesaage) {			
+		dao.saveData(mesaage);
+	}
+}

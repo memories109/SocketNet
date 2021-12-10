@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.realtime.dao.SMSDao">
+
+    <insert id="send" parameterType="java.util.HashMap">    
+        -- 
+        INSERT INTO XEMMA.EM_SMT_TRAN ( /* TEST >> EM_SMT_TRAN@REAL_EMMA */
+                    MT_PR
+                    , DATE_CLIENT_REQ
+			        , CONTENT
+			        , CALLBACK
+			        , SERVICE_TYPE
+			        , RECIPIENT_NUM      )
+            VALUES  (
+                    XEMMA.SQ_EM_SMT_TRAN_01.NEXTVAL       /* TEST >> SQ_EM_MMT_TRAN_01.NEXTVAL@REAL_EMMA */        
+                    , sysdate
+                    , #{message}
+                    , #{from}
+                    , '0'
+                    , #{to}
+        )             
+    
+    </insert>    
+    
+    <insert id="sendTest" parameterType="java.util.HashMap">    
+        -- 
+        INSERT INTO EM_SMT_TRAN@REAL_EMMA (
+                    MT_PR
+                    , DATE_CLIENT_REQ
+                    , CONTENT
+                    , CALLBACK
+                    , SERVICE_TYPE
+                    , RECIPIENT_NUM      )
+            VALUES  (
+                    SQ_EM_MMT_TRAN_01.NEXTVAL@REAL_EMMA        
+                    , sysdate
+                    , #{message}
+                    , #{from}
+                    , '0'
+                    , #{to}
+        )             
+    
+    </insert>
+    
+   
+</mapper>

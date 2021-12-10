@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="profile.name">REAL</entry>
+	
+	<entry key="oracle.driver">net.sf.log4jdbc.DriverSpy</entry>
+	<entry key="oracle.url">jdbc:log4jdbc:oracle:thin:@192.168.91.26:1521:insa</entry>
+	<entry key="oracle.username">xmars</entry>
+	<entry key="oracle.password">xanadu</entry>
+    
+    <entry key="mysql.url">jdbc:log4jdbc:mysql://s436.sendmail02.com:3306/tm</entry>
+    <entry key="mysql.username">etbs</entry>
+    <entry key="mysql.password">^etbs_db_0124!@#</entry>
+	
+	<entry key="server.port">9403</entry>
+	
+	<entry key="telegram.filePath">/logichome/tbs/logs/hask/server/telegram</entry>
+	
+	<entry key="sms.send.test">false</entry>
+	
+	<entry key="command.file">/command/command-real</entry>
+	
+</properties>

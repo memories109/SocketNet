@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="profile.name">LOCAL</entry>
+	
+	<entry key="oracle.driver">net.sf.log4jdbc.DriverSpy</entry>
+	<entry key="oracle.url">jdbc:log4jdbc:oracle:thin:@192.168.91.17:1521:insa</entry>
+	<entry key="oracle.username">TBSDEV</entry>
+	<entry key="oracle.password">wH2g^Mr#LP</entry>
+	
+	<entry key="server.port">9405</entry>
+	
+	<entry key="telegram.filePath">C:\DATA\020_Project\20180725_haskRealTime\_workspace\_log</entry>
+	
+	<entry key="sms.send.test">true</entry>
+	
+	<entry key="test.telegram">128400001272020180822ncsbtd01132726004456480010.122.122.34                          001513003FFCDNCSNCS00000QA20180822132726960132726000BADN_A_FW001                                              00            R11KRXTN00        000             00000                                                 010140    BATCH        010140        0140                                                                           00000000                                                                                                10000007585010                   XTN050191415587751                                                                                          000000                             0140                              EJLDHANACARD10001001000020180822132723                                                                                                                        111KrA4csizV07yfoARVNDEwVshMihyFU0acatUlQNJDqcS+hZQkWkWWjx4Ofco14hKXrcH6SXt9u92uSktuJ1pPg==            9044128500277  00000031111테스트매출9                                       15507 기타PG                        2208139938201808221327238818120180823041051364911904428503199                            000939349502                                                                                    </entry>
+
+	<entry key="command.file">/command/command-local</entry>
+		
+</properties>
